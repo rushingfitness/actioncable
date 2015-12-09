@@ -13,6 +13,7 @@ module ActionCable
       options = app.config.action_cable
 
       options.allowed_request_origins ||= "http://localhost:3000" if ::Rails.env.development?
+      options.allowed_request_origins ||= "https://market.patentmonk.com" if ::Rails.env.production?
 
       ActiveSupport.on_load(:action_cable) do
         options.each { |k,v| send("#{k}=", v) }
